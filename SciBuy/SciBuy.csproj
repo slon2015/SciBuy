@@ -266,6 +266,12 @@
       <DependentUpon>201712101425036_CityProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SciBuy.Domain\SciBuy.Domain.csproj">
+      <Project>{efe75bdb-0cb0-4657-b976-11948605a8a0}</Project>
+      <Name>SciBuy.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
