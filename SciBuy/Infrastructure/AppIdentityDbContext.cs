@@ -20,6 +20,16 @@ namespace SciBuy.Infrastructure
         }
     }
 
-    public class IdentityDbInit : NullDatabaseInitializer<AppIdentityDbContext>
-    { }
+    public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
+    {
+        protected override void Seed(AppIdentityDbContext context)
+        {
+            PerformInitialSetup(context);
+            base.Seed(context);
+        }
+        public void PerformInitialSetup(AppIdentityDbContext context)
+        {
+            // настройки конфигурации контекста будут указываться здесь
+        }
+    }
 }
