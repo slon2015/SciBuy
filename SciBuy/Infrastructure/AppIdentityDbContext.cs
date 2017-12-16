@@ -6,21 +6,21 @@ using Microsoft.AspNet.Identity;
 namespace SciBuy.Infrastructure
 {
     public class AppIdentityDbContext : IdentityDbContext<AppUser>
-    {
+    {   
         public AppIdentityDbContext() : base("name=IdentityDb") { }
 
         static AppIdentityDbContext()
         {
             Database.SetInitializer<AppIdentityDbContext>(new IdentityDbInit());
         }
-
+        public DbSet<MetaField> User_Meta { get; set; }
         public static AppIdentityDbContext Create()
         {
             return new AppIdentityDbContext();
         }
     }
 
-    public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
+    /*public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
     {
         protected override void Seed(AppIdentityDbContext context)
         {
@@ -30,6 +30,9 @@ namespace SciBuy.Infrastructure
         public void PerformInitialSetup(AppIdentityDbContext context)
         {
             // настройки конфигурации контекста будут указываться здесь
-        }
+        }*/
+    public class IdentityDbInit : NullDatabaseInitializer<AppIdentityDbContext>
+    {
+
     }
 }

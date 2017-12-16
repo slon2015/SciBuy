@@ -26,18 +26,17 @@ namespace SciBuy.Controllers
         {
             if (ModelState.IsValid)
             {
-                AppUser user = new AppUser { UserName = model.Name, Email = model.Email };
+                AppUser user = new AppUser {
+                    UserName = model.Name,
+                    Email = model.Email,
+                    RegistrationDate = System.DateTime.Now
+                };
                 IdentityResult result =
                     await UserManager.CreateAsync(user, model.Password);
-
                 if (result.Succeeded)
-                {
                     return RedirectToAction("Index");
-                }
                 else
-                {
                     AddErrorsFromResult(result);
-                }
             }
             return View(model);
         }

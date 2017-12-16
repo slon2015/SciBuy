@@ -45,15 +45,7 @@ namespace SciBuy.Controllers
             return View(CurrentUser);
         }
 
-        [Authorize]
-        [HttpPost]
-        public async Task<ActionResult> UserProps(Cities city)
-        {
-            AppUser user = CurrentUser;
-            user.City = city;
-            await UserManager.UpdateAsync(user);
-            return View(user);
-        }
+        
 
         private AppUser CurrentUser
         {
@@ -69,25 +61,6 @@ namespace SciBuy.Controllers
             {
                 return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
             }
-        }
-
-        // Вспомогательный метод, загружающий название элемента перечисления
-        // из атрибута Display
-        [NonAction]
-        public static string GetCityName<TEnum>(TEnum item)
-            where TEnum : struct, IConvertible
-        {
-            if (!typeof(TEnum).IsEnum)
-            {
-                throw new ArgumentException("Тип TEnum должен быть перечислением");
-            }
-            else
-                return item.GetType()
-                    .GetMember(item.ToString())
-                    .First()
-                    .GetCustomAttribute<DisplayAttribute>()
-                    .Name;
-        }
-
+        }        
     }
 }

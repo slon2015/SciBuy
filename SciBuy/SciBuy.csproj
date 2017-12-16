@@ -184,13 +184,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\UserManage.cs" />
     <Compile Include="Infrastructure\AppIdentityDbContext.cs" />
     <Compile Include="Infrastructure\AppRoleManager.cs" />
     <Compile Include="Infrastructure\AppUserManager.cs" />
     <Compile Include="Infrastructure\IdentityHelpers.cs" />
-    <Compile Include="Migrations\201712101425036_CityProperty.cs" />
-    <Compile Include="Migrations\201712101425036_CityProperty.Designer.cs">
-      <DependentUpon>201712101425036_CityProperty.cs</DependentUpon>
+    <Compile Include="Migrations\201712151614372_Meta_Fields.cs" />
+    <Compile Include="Migrations\201712151614372_Meta_Fields.Designer.cs">
+      <DependentUpon>201712151614372_Meta_Fields.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
@@ -205,7 +206,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -398,6 +399,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\Account\Registration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -416,15 +418,15 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712101425036_CityProperty.resx">
-      <DependentUpon>201712101425036_CityProperty.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SciBuy.Domain\SciBuy.Domain.csproj">
       <Project>{efe75bdb-0cb0-4657-b976-11948605a8a0}</Project>
       <Name>SciBuy.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712151614372_Meta_Fields.resx">
+      <DependentUpon>201712151614372_Meta_Fields.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
