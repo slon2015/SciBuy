@@ -14,7 +14,7 @@ namespace SciBuy.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
             ContextKey = "SciBuy.Infrastructure.AppIdentityDbContext";
         }
 
@@ -46,10 +46,10 @@ namespace SciBuy.Migrations
                 userMgr.AddToRole(user.Id, roleName);
             }
 
-            foreach (AppUser dbUser in userMgr.Users)
-            {
-                dbUser.City = Cities.MOSCOW;
-            }
+            //foreach (AppUser dbUser in userMgr.Users)
+            //{
+            //    dbUser.City = Cities.MOSCOW;
+            //}
 
             context.SaveChanges();
         }

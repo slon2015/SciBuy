@@ -1,23 +1,22 @@
 ﻿using System;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System.ComponentModel.DataAnnotations;
+
+using System.Collections.Generic;
 
 namespace SciBuy.Models
 {
-    public enum Cities
-    {
-        [Display(Name = "Лондон")]
-        LONDON,
-
-        [Display(Name = "Париж")]
-        PARIS,
-
-        [Display(Name = "Москва")]
-        MOSCOW
-    }
 
     public class AppUser : IdentityUser
     {
-        public Cities City { get; set; }
+      
+        public string RealName { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        public ICollection<MetaField> User_Meta { get; set; }
+    }
+    public class MetaField
+    {
+        public int MetaFieldId { get; set; }
+        public string Name { get; set; }
+        public string Value { get; set; }
     }
 }

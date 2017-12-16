@@ -7,6 +7,22 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SciBuy.Models
 {
+    public class RegistrationModel
+    {
+        [Display(Name = "Логин")]
+        [Required(ErrorMessage = "Пожалуйста, введите логин")]
+        public string LoginName { get; set; }
+        [Display(Name = "E-mail")]
+        [Required(ErrorMessage = "Пожалуйста, введите E-mail")]
+        public string Email { get; set; }
+        [Display(Name = "Пароль")]
+        [Required(ErrorMessage = "Пожалуйста, пароль")]
+        public string Password { get; set; }
+        [Display(Name = "Имя")]
+        [Required(ErrorMessage = "Пожалуйста, введите имя")]
+        public string Name { get; set; }
+
+    }
     public class CreateModel
     {
         [Required]

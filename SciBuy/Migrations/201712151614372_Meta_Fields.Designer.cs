@@ -7,13 +7,13 @@ namespace SciBuy.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class CityProperty : IMigrationMetadata
+    public sealed partial class Meta_Fields : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CityProperty));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Meta_Fields));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712101425036_CityProperty"; }
+            get { return "201712151614372_Meta_Fields"; }
         }
         
         string IMigrationMetadata.Source
