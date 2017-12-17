@@ -17,7 +17,8 @@ namespace SciBuy.Infrastructure
         {
             return new AppIdentityDbContext();
         }
-        public DbSet<MetaField> User_Meta { get; set; }       
+        public DbSet<MetaField> User_Meta { get; set; }    
+        public DbSet<Page> Pages { get; set; }
     }
 
     /*public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>

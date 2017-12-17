@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
-using System.Security.Claims;
+﻿using System.Web;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using System.Security.Claims;
 using SciBuy.Infrastructure;
 using SciBuy.Models;
-using Microsoft.AspNet.Identity.Owin;
-using System.Web;
-using System.Collections.Generic;
 
 namespace SciBuy.Controllers
 {

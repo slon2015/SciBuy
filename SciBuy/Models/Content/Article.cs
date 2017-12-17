@@ -7,11 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SciBuy.Models
 {
-    public class Article
+    public class Article : Page
     {
-        public string Name;
-        public string Content;
-        public int AuthorID;
-        public int ArticleID;
     }
 }

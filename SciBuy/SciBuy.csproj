@@ -188,6 +188,10 @@
     <Compile Include="Infrastructure\Identity\AppIdentityDbContext.cs" />
     <Compile Include="Infrastructure\Identity\AppRoleManager.cs" />
     <Compile Include="Infrastructure\Identity\AppUserManager.cs" />
+    <Compile Include="Migrations\201712171523596_Pages.cs" />
+    <Compile Include="Migrations\201712171523596_Pages.Designer.cs">
+      <DependentUpon>201712171523596_Pages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Content\Article.cs" />
     <Compile Include="Infrastructure\Identity\IdentityHelpers.cs" />
     <Compile Include="Models\Content\Page.cs" />
@@ -429,6 +433,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712151614372_Meta_Fields.resx">
       <DependentUpon>201712151614372_Meta_Fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712171523596_Pages.resx">
+      <DependentUpon>201712171523596_Pages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
