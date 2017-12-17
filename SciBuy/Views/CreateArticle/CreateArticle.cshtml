@@ -1,0 +1,36 @@
+﻿@model SciBuy.Models.CreateArticleViewModel
+
+@{
+    ViewBag.Title = "CreateArticle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<script type="text/javascript" src="~/Scripts/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinyMCE.init({
+        selector: '#editor',
+        theme: 'modern',
+        language: 'ru',
+        height: 300,
+        plugins:["image"]
+    });
+</script>
+
+@using (Html.BeginForm("CreateArticle"))
+{
+    @Html.ValidationSummary()
+    
+    @Html.TextBoxFor(M=> M.Name)
+    
+    @Html.TextAreaFor(M=>M.Content, new { @id="editor" })//сюда подключается tinyMCE
+
+    @Html.HiddenFor(M=> M.author.Id)//Позже сделаю через httpcontext и выпилю это поле
+
+    @Html.HiddenFor(M=> M.ArticleID)
+    
+    <input type="submit" value="Создать" />
+}    
+
+
+
+
