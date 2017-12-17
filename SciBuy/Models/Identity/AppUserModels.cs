@@ -5,10 +5,8 @@ using System.Collections.Generic;
 
 namespace SciBuy.Models
 {
-
     public class AppUser : IdentityUser
     {
-      
         public string RealName { get; set; }
         public DateTime RegistrationDate { get; set; }
         public ICollection<MetaField> User_Meta { get; set; }

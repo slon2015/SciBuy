@@ -53,7 +53,7 @@
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
@@ -185,19 +185,21 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\UserManage.cs" />
-    <Compile Include="Infrastructure\AppIdentityDbContext.cs" />
-    <Compile Include="Infrastructure\AppRoleManager.cs" />
-    <Compile Include="Infrastructure\AppUserManager.cs" />
-    <Compile Include="Infrastructure\IdentityHelpers.cs" />
+    <Compile Include="Infrastructure\Identity\AppIdentityDbContext.cs" />
+    <Compile Include="Infrastructure\Identity\AppRoleManager.cs" />
+    <Compile Include="Infrastructure\Identity\AppUserManager.cs" />
+    <Compile Include="Models\Content\Article.cs" />
+    <Compile Include="Infrastructure\Identity\IdentityHelpers.cs" />
+    <Compile Include="Models\Content\Page.cs" />
     <Compile Include="Migrations\201712151614372_Meta_Fields.cs" />
     <Compile Include="Migrations\201712151614372_Meta_Fields.Designer.cs">
       <DependentUpon>201712151614372_Meta_Fields.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AppRole.cs" />
-    <Compile Include="Models\AppUserModels.cs" />
-    <Compile Include="Models\CreateArticleViewModel.cs" />
-    <Compile Include="Models\UserViewModels.cs" />
+    <Compile Include="Models\Identity\AppRole.cs" />
+    <Compile Include="Models\Identity\AppUserModels.cs" />
+    <Compile Include="Models\Content\CreateArticleViewModel.cs" />
+    <Compile Include="Models\Identity\UserViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -400,6 +402,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\Account\Registration.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

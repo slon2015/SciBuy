@@ -21,14 +21,18 @@ namespace SciBuy.Infrastructure
         {
             AppIdentityDbContext db = context.Get<AppIdentityDbContext>();
             AppUserManager manager = new AppUserManager(new UserStore<AppUser>(db));
-
+            manager.UserValidator = new UserValidator<AppUser>(manager)
+            {
+                RequireUniqueEmail = true,
+                AllowOnlyAlphanumericUserNames = true
+            };
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
+                RequiredLength = 5,
                 RequireNonLetterOrDigit = false,
                 RequireDigit = false,
-                RequireLowercase = true,
-                RequireUppercase = true
+                RequireLowercase = false,
+                RequireUppercase = false
             };
 
             return manager;

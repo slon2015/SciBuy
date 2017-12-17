@@ -13,11 +13,11 @@ namespace SciBuy.Infrastructure
         {
             Database.SetInitializer<AppIdentityDbContext>(new IdentityDbInit());
         }
-        public DbSet<MetaField> User_Meta { get; set; }
         public static AppIdentityDbContext Create()
         {
             return new AppIdentityDbContext();
         }
+        public DbSet<MetaField> User_Meta { get; set; }       
     }
 
     /*public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>

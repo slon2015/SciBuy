@@ -1,4 +1,4 @@
-﻿@model SciBuy.Models.CreateModel
+﻿@model SciBuy.Models.RegistrationModel
 
 @{
     ViewBag.Title = "Создание пользователя";
@@ -7,6 +7,10 @@
 @Html.ValidationSummary(false)
 @using (Html.BeginForm())
 {
+    <div class="form-group">
+        <label>Логин</label>
+        @Html.TextBoxFor(x => x.LoginName, new { @class = "form-control" })
+    </div>
     <div class="form-group">
         <label>Имя</label>
         @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })

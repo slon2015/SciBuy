@@ -15,19 +15,18 @@ namespace SciBuy.Controllers
         {
             return View(UserManager.Users);
         }
-
         public ActionResult Create()
         {
             return View();
         }
-
         [HttpPost]
-        public async Task<ActionResult> Create(CreateModel model)
+        public async Task<ActionResult> Create(RegistrationModel model)
         {
             if (ModelState.IsValid)
             {
                 AppUser user = new AppUser {
-                    UserName = model.Name,
+                    UserName = model.LoginName,
+                    RealName = model.Name,
                     Email = model.Email,
                     RegistrationDate = System.DateTime.Now
                 };
