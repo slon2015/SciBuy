@@ -8,17 +8,37 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using SciBuy.Models;
 using SciBuy.Infrastructure;
+using SciBuy.Infrastructure.Abstract;
 
 namespace SciBuy.Controllers
 {
-    public class CreateArticleController : Controller
+    public class ArticleController : Controller
     {
-        [HttpGet]
-        [Authorize]//Временно доступно анонимным пользователям, пока никита не сделает нормальную регистрацию
-        public ViewResult CreateArticle()
+        IRepository repos;
+        public ArticleController(IRepository r)
         {
-            return View();
+            repos = r;
         }
+
+        [HttpGet]
+        [Authorize]
+        public ViewResult CreateArticle(int ArtId=0)
+        {
+            CreateArticleViewModel model = new CreateArticleViewModel();
+            if (ArtId != 0)
+            {
+                Article article = repos.Articles.FirstOrDefault(a => a.PageId == ArtId);
+                if (article != null)
+                {
+                    model.Name = article.Title;
+                    model.Content = article.Content;
+                    model.ArticleID = article.PageId;
+                    model.author = article.Author;
+                }
+            }
+            return View(model);
+        }
+
         [HttpPost]
         [Authorize]
         public ActionResult CreateArticle(CreateArticleViewModel model)
@@ -35,6 +55,7 @@ namespace SciBuy.Controllers
 
             //Сохраняем созданную/измененную статью здесь.
 
+            repos.Save(current);
 
             ///////////////////////////////////////////
             return RedirectToAction("Complete");
@@ -45,6 +66,12 @@ namespace SciBuy.Controllers
             {
                 return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
             }
+        }
+
+        [AllowAnonymous]
+        public ViewResult List()
+        {
+            return View(repos.Articles);
         }
     }
 }
