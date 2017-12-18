@@ -16,5 +16,13 @@ namespace SciBuy.Models
         [AllowHtml]
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
+
+        public CreateArticleViewModel()
+        {
+            ArticleID = 0;
+            Name = "";
+            Content = "";
+            author = null;
+        }
     }
 }
