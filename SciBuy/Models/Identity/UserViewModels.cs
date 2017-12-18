@@ -23,6 +23,19 @@ namespace SciBuy.Models
         public string Name { get; set; }
 
     }
+    public class EditModel
+    {
+        [Display(Name = "Имя")]
+        [Required(ErrorMessage = "Пожалуйста, введите имя")]
+        public string RealName { get; set; }
+        [Display(Name = "E-mail")]
+        [Required(ErrorMessage = "Пожалуйста, введите E-mail")]
+        public string Email { get; set; }
+        [Display(Name = "Пароль")]
+        [Required(ErrorMessage = "Пожалуйста,введите пароль")]
+        public string Password { get; set; }
+        public ICollection<MetaField> Meta { get; set; }
+    }
     public class CreateModel
     {
         [Required]
@@ -36,10 +49,11 @@ namespace SciBuy.Models
     }
     public class LoginViewModel
     {
-        [Required]
+        [Display(Name = "Имя")]
+        [Required(ErrorMessage = "Пожалуйста, введите имя")]
         public string Name { get; set; }
-
-        [Required]
+        [Display(Name = "Пароль")]
+        [Required(ErrorMessage = "Пожалуйста, пароль")]
         public string Password { get; set; }
     }
     public class RoleEditModel
@@ -48,7 +62,6 @@ namespace SciBuy.Models
         public IEnumerable<AppUser> Members { get; set; }
         public IEnumerable<AppUser> NonMembers { get; set; }
     }
-
     public class RoleModificationModel
     {
         [Required]

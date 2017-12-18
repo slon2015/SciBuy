@@ -20,13 +20,13 @@
 {
     @Html.ValidationSummary()
     
-    @Html.TextBoxFor(M=> M.Name)
+    @Html.TextBoxFor(M => M.Name)
     
-    @Html.TextAreaFor(M=>M.Content, new { @id="editor" })//сюда подключается tinyMCE
+    @Html.TextAreaFor(M => M.Content, new { @id="editor" })//сюда подключается tinyMCE
 
-    @Html.HiddenFor(M=> M.author.Id)//Позже сделаю через httpcontext и выпилю это поле
+    @Html.HiddenFor(M => M.author.Id)//Позже сделаю через httpcontext и выпилю это поле
 
-    @Html.HiddenFor(M=> M.ArticleID)
+    @Html.HiddenFor(M => M.ArticleID)
     
     <input type="submit" value="Создать" />
 }    

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using SciBuy.Domain;
 using System.ComponentModel.DataAnnotations;
 
 namespace SciBuy.Models
@@ -17,5 +16,13 @@ namespace SciBuy.Models
         [AllowHtml]
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
+
+        public CreateArticleViewModel()
+        {
+            ArticleID = 0;
+            Name = "";
+            Content = "";
+            author = null;
+        }
     }
 }

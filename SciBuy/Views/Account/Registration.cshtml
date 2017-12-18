@@ -11,7 +11,7 @@
         if (property.PropertyName != "Password")
         {
             <div class="form-group">
-                <label>@property.DisplayName</label>
+                <label>@property.DisplayName @if (property.IsRequired) { <span>*</span>}</label>
                 @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
                 @Html.ValidationMessage(property.PropertyName)
             </div>
@@ -25,7 +25,6 @@
 
 
     </div>
+    @Html.ValidationSummary(true);
         <button class="btn btn-primary" type="submit">Регистрация</button>
-@Html.ValidationSummary()
-
 }

@@ -1,11 +1,12 @@
 ﻿@model SciBuy.Models.LoginViewModel
 @{
     ViewBag.Title = "Авторизация на сайте";
+    HtmlHelper.ClientValidationEnabled = false;
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
 }
 
 <h2>Войти</h2>
 
-@Html.ValidationSummary()
 
 @using (Html.BeginForm())
 {
@@ -14,11 +15,16 @@
     <div class="form-group">
         <label>Имя</label>
         @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        @Html.ValidationMessage("Name")
     </div>
     <div class="form-group">
         <label>Пароль</label>
         @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+        @Html.ValidationMessage("Password")
+    </div>
+    <div class="error">
+        @Html.ValidationMessage("LoginError")
     </div>
     <button class="btn btn-primary" type="submit">Войти</button>
 }
-@Html.ActionLink("Регистрация", "Registration", "Account");
+@Html.ActionLink("Регистрация", "Registration", "Account", new { @class = "btn btn-primary"})

@@ -1,31 +1,22 @@
-﻿@model SciBuy.Models.AppUser
+﻿@model System.Collections.Generic.Dictionary<string,object>
 @{
-    ViewBag.Title = "Редактирование пользователя";
+    ViewBag.Title = "Панель управления пользователя";
 }
+<h2>Панель управления пользователя</h2>
 
-@Html.ValidationSummary(false)
+<table class="table">
+    @foreach (var pair in Model)
+    {
+        <tr>
 
-<h2>Редактирование пользователя</h2>
-<div class="form-group">
-    <label>UserName</label>
-    <p class="form-control-static">@Model.UserName</p>
-</div>
-
-@using (Html.BeginForm())
+            <td>@pair.Key</td>
+            <td>@pair.Value</td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Выйти", "Logout", "Account", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Редактировать", "Edit", "Account", null, new { @class = "btn btn-primary" })
+@using (Html.BeginForm("Delete","Account",FormMethod.Post))
 {
-    @Html.HiddenFor(x => x.Id)
-    <div class="form-group">
-        <label>Имя</label>
-        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Email</label>
-        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Пароль</label>
-        <input name="password" type="password" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-primary">Сохранить</button>
-    @Html.ActionLink("Отмена", "Index", null, new { @class = "btn btn-default" })
+    <button type="submit" class="btn btn-primary" >Удалить</button>
 }
