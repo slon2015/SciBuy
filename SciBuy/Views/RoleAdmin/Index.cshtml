@@ -23,7 +23,7 @@
         }
         else
         {
-            foreach (AppRole role in Model)
+            foreach (AppRole role in Model.ToList())
             {
                 <tr>
                     <td>@role.Id</td>
