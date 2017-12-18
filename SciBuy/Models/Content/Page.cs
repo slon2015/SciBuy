@@ -14,5 +14,5 @@ namespace SciBuy.Models
         public DateTime CreatingDate { get; set; }
         public string Title { get; set; }
         public AppUser Author { get; set; }
-    }
+    } 
 }

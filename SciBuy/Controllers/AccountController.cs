@@ -14,24 +14,36 @@ namespace SciBuy.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        public ActionResult Index()
+        [AllowAnonymous]
+        public ActionResult Index(string username = null)
         {
+            AppUser user = null;
+            if (username != null)
+            {
+                user = UserManager.FindByName(username);
+                if (user == null)
+                    return View("Error", new string[] { "Пользователь с таким именем не найден" });
+            }
+            if (AuthManager.User.Identity.IsAuthenticated)
+                user = CurrentUser;
+            else
+                return RedirectToAction("Login");
             //Создаем словарь значений свойств для представления
             Dictionary<string, object> dict = new Dictionary<string, object>()
             {
-                { "E-mail",CurrentUser.Email },
-                { "Логин",CurrentUser.UserName },
-                { "Имя",CurrentUser.RealName },
+                { "E-mail",user.Email },
+                { "Логин",user.UserName },
+                { "Имя",user.RealName },
                 { "Дата регистрации",CurrentUser.RegistrationDate },
             };
-            if (CurrentUser.User_Meta != null)
-                foreach (var data in CurrentUser.User_Meta)
+            if (user.User_Meta != null)
+                foreach (var data in user.User_Meta)
                     dict.Add(data.Name, data.Value);
             return View(dict);
         }
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
-        {           
+        {
             if (HttpContext.User.Identity.IsAuthenticated)
                 return View("Error", new string[] { "В доступе отказано" });
             ViewBag.returnUrl = returnUrl;
@@ -77,7 +89,6 @@ namespace SciBuy.Controllers
         {
             if (ModelState.IsValid)
             {
-                
                 AppUser user = new AppUser
                 {
                     UserName = model.LoginName,
@@ -87,8 +98,11 @@ namespace SciBuy.Controllers
                 };
                 IdentityResult result =
                     await UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
+                    IdentityResult resultrole =
+                    await UserManager.AddToRolesAsync(user.Id, "Пользователь");
                     ActionResult actionResult = await Login(new LoginViewModel() { Name = model.LoginName, Password = model.Password }, Url.Action("Index", "Home"));
                     return RedirectToAction("Index", "Home");
                 }
@@ -154,6 +168,10 @@ namespace SciBuy.Controllers
             AuthManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult ManageArticles()
+        {
+            return View();
+        }
         private IAuthenticationManager AuthManager
         {
             get
@@ -165,7 +183,7 @@ namespace SciBuy.Controllers
         {
             get
             {
-               
+
                 return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
             }
         }

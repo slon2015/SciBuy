@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="SciBuy" />
+  <setParameter name="IdentityDb-Web.config Connection String" value="Data Source=31.31.196.160;Initial Catalog=u0420772_IdentityDb;Persist Security Info=True;User ID=u0420772_admin;Password=12345qwe" />
+  <setParameter name="IdentityDb-Deployment Connection String" value="Data Source=31.31.196.160;Initial Catalog=u0420772_IdentityDb;Persist Security Info=True;User ID=u0420772_admin;Password=12345qwe" />
+  <setParameter name="SciBuy.Infrastructure.AppIdentityDbContext-Web.config Connection String" value="SciBuy.Infrastructure.AppIdentityDbContext_ConnectionString" />
+</parameters>
