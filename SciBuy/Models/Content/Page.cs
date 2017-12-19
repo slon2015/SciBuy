@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SciBuy.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
 
 namespace SciBuy.Models
 {
@@ -13,6 +16,6 @@ namespace SciBuy.Models
         public string Content { get; set; }
         public DateTime CreatingDate { get; set; }
         public string Title { get; set; }
-        public AppUser Author { get; set; }
+        public virtual AppUser Author { get; set; }
     } 
 }

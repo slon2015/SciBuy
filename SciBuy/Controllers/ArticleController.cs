@@ -34,6 +34,7 @@ namespace SciBuy.Controllers
                     model.Content = article.Content;
                     model.ArticleID = article.PageId;
                     model.author = article.Author;
+                    
                 }
             }
             return View(model);
@@ -48,7 +49,8 @@ namespace SciBuy.Controllers
                 Title = model.Name,
                 Content = model.Content,
                 PageId = model.ArticleID,
-                Author = UserManager.FindByName(HttpContext.User.Identity.Name)
+                Author = UserManager.FindByName(HttpContext.User.Identity.Name),
+                CreatingDate = DateTime.Now
             };
             ///////////////////////////////////////////
 
