@@ -31,7 +31,7 @@ namespace SciBuy.Infrastructure
         private void AddBindings()
         {
             // Здесь размещаются привязки
-            kernel.Bind<IRepository>().To<StaticRepository>().InSingletonScope();
+            kernel.Bind<IRepository>().To<DbRepository>();
         }
     }
 }

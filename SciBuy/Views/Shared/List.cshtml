@@ -1,0 +1,7 @@
+﻿@using SciBuy.Models;
+@model IEnumerable<Article>
+@foreach (Article article in Model)
+{
+    @Html.Partial("Preview", article, ViewData);
+}
+

@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
@@ -8,12 +9,18 @@ using Microsoft.Owin.Security;
 using System.Security.Claims;
 using SciBuy.Infrastructure;
 using SciBuy.Models;
+using SciBuy.Infrastructure.Abstract;
 
 namespace SciBuy.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        IRepository repos;
+        public AccountController(IRepository r)
+        {
+            repos = r;
+        }
         [AllowAnonymous]
         public ActionResult Index(string username = null)
         {
@@ -170,7 +177,7 @@ namespace SciBuy.Controllers
         }
         public ActionResult ManageArticles()
         {
-            return View();
+            return View(CurrentUser.Pages.OfType<Article>());
         }
         private IAuthenticationManager AuthManager
         {
