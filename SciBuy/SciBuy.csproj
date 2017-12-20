@@ -285,6 +285,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\license.txt" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\filmanager\ajax_calls.php" />
+    <Content Include="Scripts\filmanager\dialog.php" />
+    <Content Include="Scripts\filmanager\execute.php" />
+    <Content Include="Scripts\filmanager\force_download.php" />
+    <Content Include="Scripts\filmanager\plugin.min.js" />
+    <Content Include="Scripts\filmanager\upload.php" />
+    <Content Include="Scripts\filmanager\UploadHandler.php" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
