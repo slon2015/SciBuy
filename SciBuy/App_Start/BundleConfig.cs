@@ -20,6 +20,7 @@ namespace SciBuy
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/popper*",
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 

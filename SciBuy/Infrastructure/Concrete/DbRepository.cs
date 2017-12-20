@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using SciBuy.Models;
 using Microsoft.AspNet.Identity.Owin;
+using SciBuy.Models.Content;
 
 namespace SciBuy.Infrastructure.Concrete
 {
@@ -23,7 +24,32 @@ namespace SciBuy.Infrastructure.Concrete
                 return context.Pages.OfType<Article>().AsEnumerable();
             }
         }
-
+        public IEnumerable<Term> Terms
+        {
+            get
+            {
+                return context.Terms;
+            }
+        }
+        public IEnumerable<Tag> Tags
+        {
+            get
+            {
+                return context.Terms.OfType<Tag>().AsEnumerable();
+            }
+        }
+        public IEnumerable<Category> Categories
+        {
+            get
+            {
+                return context.Terms.OfType<Category>().AsEnumerable();
+            }
+        }
+        public void Save(Term term)
+        {
+            context.Terms.Add(term);
+            context.SaveChanges();
+        }
         public void Save(Article art)
         {
             context.Pages.Add(art);

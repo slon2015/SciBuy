@@ -19,10 +19,16 @@ namespace SciBuy.Controllers
         {
             repos = r;
         }
-
+        public ViewResult Index(int id=0)
+        {
+            Article article = repos.Articles.FirstOrDefault(x => x.PageId == id);   
+            if (article != null)
+                return View(article);
+            return View("Error", new string[] { "Статья" });
+        }
         [HttpGet]
         [Authorize]
-        public ViewResult CreateArticle(int ArtId=0)
+        public ViewResult CreateArticle(int ArtId = 0)
         {
             CreateArticleViewModel model = new CreateArticleViewModel();
             if (ArtId != 0)
@@ -33,13 +39,11 @@ namespace SciBuy.Controllers
                     model.Name = article.Title;
                     model.Content = article.Content;
                     model.ArticleID = article.PageId;
-                    model.author = article.Author;
-                    
+                    model.Author = article.Author;
                 }
             }
             return View(model);
         }
-
         [HttpPost]
         [Authorize]
         public ActionResult CreateArticle(CreateArticleViewModel model)

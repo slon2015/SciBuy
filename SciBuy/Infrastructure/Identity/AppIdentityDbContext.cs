@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
+using SciBuy.Models.Content;
 
 namespace SciBuy.Infrastructure
 {
@@ -19,6 +20,7 @@ namespace SciBuy.Infrastructure
         }
         public DbSet<MetaField> User_Meta { get; set; }    
         public DbSet<Page> Pages { get; set; }
+        public DbSet<Term> Terms { get; set; }
     }
 
     /*public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>

@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title – приложение ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="header_top col-md-12 d-flex justify-content-center align-items-center p-0">
+                    <div class="logo col-md-6 d-flex align-items-center pl-0">
+                        @Html.ActionLink("SciBuy", "Index", "Home")
+                        @using (Html.BeginForm("Index", "Search", FormMethod.Get))
+                        {
+                            @Html.TextBox("title", "", new { @class = "form-control",@placeholder ="Поиск" })
+                        }
+                    </div>
+                    <div class="user col-md-6 d-flex justify-content-end align-items-center pr-0">
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Регистрация", "Registration", "Account")
+                            @Html.ActionLink("Вход", "Login", "Account")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Мой аккаунт", "Index", "Account")
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="header_nav col-md-12 d-flex justify-content-center align-items-center">
+                <ul class="menu">
+                    <li>
+                        <a href=#>Меню 1</a>
+                        <!-- <ul class="submenu">
+                            <li><a href=#>Подменю 1</a></li>
+                            <li><a href=#>Подменю 1</a></li>
+                            <li><a href=#>Подменю 1</a></li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href=#>Меню 2</a>
+                        <!-- <ul class="submenu">
+                            <li><a href=#>Подменю 2</a></li>
+                            <li><a href=#>Подменю 2</a></li>
+                            <li><a href=#>Подменю 2</a></li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href=#>Меню 3</a>
+                        <!-- <ul class="submenu">
+                            <li><a href=#>Подменю 3</a></li>
+                            <li><a href=#>Подменю 3</a></li>
+                            <li><a href=#>Подменю 3</a></li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href=#>Меню 4</a>
+                        <!-- <ul class="submenu">
+                            <li><a href=#>Подменю 4</a></li>
+                            <li><a href=#>Подменю 4</a></li>
+                            <li><a href=#>Подменю 4</a></li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href=#>Меню 5</a>
+                        <!-- <ul class="submenu">
+                            <li><a href=#>Подменю 5</a></li>
+                            <li><a href=#>Подменю 5</a></li>
+                            <li><a href=#>Подменю 5</a></li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href=#>Меню 6</a>
+                        <!-- <ul class="submenu">
+                            <li><a href=#>Подменю 6</a></li>
+                            <li><a href=#>Подменю 6</a></li>
+                            <li><a href=#>Подменю 6</a></li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href=#>Меню 7</a>
+                        <!-- <ul class="submenu">
+                            <li><a href=#>Подменю 7</a></li>
+                            <li><a href=#>Подменю 7</a></li>
+                            <li><a href=#>Подменю 7</a></li>
+                        </ul> -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>

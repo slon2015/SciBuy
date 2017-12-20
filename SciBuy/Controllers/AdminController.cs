@@ -126,6 +126,12 @@ namespace SciBuy.Controllers
             }
             return View(user);
         }
+        public ActionResult CreateCategory(int id=0)
+        {
+            if (id == 0)
+                return View();
+            return View();
+        }
         private void AddErrorsFromResult(IdentityResult result)
         {
             foreach (string error in result.Errors)

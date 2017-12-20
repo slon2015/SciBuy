@@ -1,0 +1,18 @@
+﻿@model SciBuy.Models.Article
+@{
+    ViewBag.Title =  Model.Title;
+    
+}
+<h1>@Model.Title</h1>
+<div class="page-content">
+    @Html.Raw(Model.Content)
+</div>
+@if (User.Identity.Name == Model.Author.UserName)
+{
+    <div class="edit">
+        @Html.ActionLink("Редактировать", "CreateArticle", "Article", new { ArtID = Model.PageId }, null)
+        <span>|</span>
+        @Html.ActionLink("Удалить", "Delete", "Article", new { ArtID = Model.PageId }, null)
+    </div>
+}
+<span class="date">@Model.CreatingDate</span>
