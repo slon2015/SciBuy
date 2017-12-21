@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
@@ -8,12 +9,18 @@ using Microsoft.Owin.Security;
 using System.Security.Claims;
 using SciBuy.Infrastructure;
 using SciBuy.Models;
+using SciBuy.Infrastructure.Abstract;
 
 namespace SciBuy.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        IRepository repos;
+        public AccountController(IRepository r)
+        {
+            repos = r;
+        }
         [AllowAnonymous]
         public ActionResult Index(string username = null)
         {
@@ -55,25 +62,26 @@ namespace SciBuy.Controllers
         public async Task<ActionResult> Login(LoginViewModel details, string returnUrl)
         {
             //ищем пользоваетеля в бд
-            AppUser user = await UserManager.FindAsync(details.Name, details.Password);
-            if (user == null)
-                ModelState.AddModelError("LoginError", "Некорректное имя или пароль.");
-            else
+            if (ModelState.IsValid)
             {
-                ClaimsIdentity ident = await UserManager.CreateIdentityAsync(user,
-                    DefaultAuthenticationTypes.ApplicationCookie);
-
-                AuthManager.SignOut();
-                //Аунтетифицируем пользователя на основе куки
-                AuthManager.SignIn(new AuthenticationProperties
+                AppUser user = await UserManager.FindAsync(details.Name, details.Password);
+                if (user == null)
+                    ModelState.AddModelError("LoginError", "Некорректное имя или пароль.");
+                else
                 {
-                    IsPersistent = false
-                }, ident);
-                if (returnUrl == "" || returnUrl == null)
-                    returnUrl = Url.Action("Index", "Home");
-                return Redirect(returnUrl);
+                    ClaimsIdentity ident = await UserManager.CreateIdentityAsync(user,
+                        DefaultAuthenticationTypes.ApplicationCookie);
+                    AuthManager.SignOut();
+                    //Аунтетифицируем пользователя на основе куки
+                    AuthManager.SignIn(new AuthenticationProperties
+                    {
+                        IsPersistent = false
+                    }, ident);
+                    if (returnUrl == "" || returnUrl == null)
+                        returnUrl = Url.Action("Index", "Home");
+                    return Redirect(returnUrl);
+                }
             }
-
             return View(details);
         }
         [AllowAnonymous]
@@ -118,6 +126,7 @@ namespace SciBuy.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(EditModel model)
         {
+            
             AppUser user = CurrentUser;
             user.RealName = model.RealName;
             user.Email = model.Email.Trim(' ');
@@ -170,7 +179,7 @@ namespace SciBuy.Controllers
         }
         public ActionResult ManageArticles()
         {
-            return View();
+            return View(CurrentUser.Pages.OfType<Article>());
         }
         private IAuthenticationManager AuthManager
         {
@@ -183,7 +192,6 @@ namespace SciBuy.Controllers
         {
             get
             {
-
                 return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
             }
         }

@@ -1,0 +1,10 @@
+﻿@using SciBuy.Models
+@using SciBuy.Helpers
+@model IEnumerable<Article>
+@{
+    ViewBag.Title = "Управление статьями";
+    ViewData["Edit"] = true;
+}
+<h2 class="d-flex align-items-center mb-5">Статьи пользователя @Html.ActionLink("Создать", "CreateArticle", "Article",null, new { @class = "btn btn-primary ml-3" })</h2>
+
+@Html.Partial("List", Model)

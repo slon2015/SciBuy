@@ -1,21 +1,18 @@
-﻿@using System.Collections.Generic
-@model Dictionary<string, object>
+﻿
+@model IEnumerable<SciBuy.Models.Article>
 
 @{
     ViewBag.Title = "ASP.NET Identity";
+    ViewData["Edit"] = false;
 }
-
-<div class="panel panel-primary">
-    <div class="panel-heading">Данные пользователей</div>
-    <table class="table table-striped">
-        @foreach (string key in Model.Keys)
-        {
-            <tr>
-                <th>@key</th>
-                <td>@Model[key]</td>
-            </tr>
-        }
-    </table>
+<div class="main_title2 text-center">
+    <h1>Делись знаниями и приобретай их!</h1>
+    <h2>SciBuy - платформа для тех, кто идёт вперед.</h2>
+    <p>Наш сервис помогает всем, кто хочет получать знания или делиться ими. Здесь вы можете найти единомышлинников, ответ на интересующий Вас вопрос, научные статьи на всевозможные темы, ресурс постоянно пополняется его участниками, которые сами регулируют качество выпускаемого контента. Присоединяйся, в знании - сила!</p>
 </div>
-@Html.ActionLink("Выйти", "Logout", "Account", null, new { @class = "btn btn-primary" })
-
+<div class="articles_last">
+    <div class="title_articles d-flex justify-content-center align-items-center">
+        <h2 class="text-center">Последние статьи</h2>
+    </div>
+    @Html.Partial("List", Model)
+</div>

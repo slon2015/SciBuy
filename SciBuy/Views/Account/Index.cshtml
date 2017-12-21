@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Панель управления пользователя";
 }
-<h2>Панель управления пользователя</h2>
+<h2 class="mb-3">Панель управления пользователя</h2>
 
 <table class="table">
     @foreach (var pair in Model)
@@ -14,9 +14,7 @@
         </tr>
     }
 </table>
-@Html.ActionLink("Выйти", "Logout", "Account", null, new { @class = "btn btn-primary" })
 @Html.ActionLink("Редактировать", "Edit", "Account", null, new { @class = "btn btn-primary" })
-@using (Html.BeginForm("Delete","Account",FormMethod.Post))
-{
-    <button type="submit" class="btn btn-primary" >Удалить</button>
-}
+@Html.ActionLink("Выйти", "Logout", "Account", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Удалить", "Delete", "Account", null, new { @class = "delete btn btn-danger" })
+

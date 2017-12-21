@@ -9,6 +9,7 @@ namespace SciBuy.Models
     {
         public string RealName { get; set; }
         public DateTime RegistrationDate { get; set; }
+        public virtual ICollection<Page> Pages { get; set; } 
         public virtual ICollection<MetaField> User_Meta { get; set; }
     }
     public class MetaField

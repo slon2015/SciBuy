@@ -12,7 +12,7 @@ namespace SciBuy.Models
         public string Name { get; set; }
         [Required]
         public int ArticleID { get; set; }
-        public AppUser author { get; set; }
+        public AppUser Author { get; set; }
         [AllowHtml]
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
@@ -22,7 +22,7 @@ namespace SciBuy.Models
             ArticleID = 0;
             Name = "";
             Content = "";
-            author = null;
+            Author = null;
         }
     }
 }

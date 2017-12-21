@@ -1,46 +1,317 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-.field-validation-error {
-    color: #f00;
+﻿button:focus {
+    outline: none
 }
 
-.field-validation-valid {
-    display: none;
+a:active, a:focus, a:hover, a:visited {
+    text-decoration: none
 }
 
-.input-validation-error {
-    border: 1px solid #f00;
-    background-color: #fee;
+header {
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    background-color: #1a1a1a
 }
 
-.validation-summary-errors {
-    font-weight: bold;
-    color: #f00;
+    header .header_top {
+        background-color: #1a1a1a;
+        height: auto
+    }
+
+        header .header_top .logo {
+            height: 70px
+        }
+
+            header .header_top .logo a {
+                font-size: 40px;
+                color: #fff;
+                text-decoration: none;
+                font-weight: bold
+            }
+
+        header .header_top .search {
+            height: 70px
+        }
+
+            header .header_top .search input {
+                padding: 5px;
+                border: 1px solid #fff
+            }
+
+        header .header_top .user {
+            height: 70px
+        }
+
+            header .header_top .user a {
+                margin-left: 10px;
+                text-decoration: none;
+                padding: 5px 15px;
+                background-color: #333;
+                color: #fff;
+                border: 1px solid #fff;
+                float: left;
+                position: relative
+            }
+
+                header .header_top .user a:hover {
+                    background-color: #fff;
+                    color: #1a1a1a
+                }
+
+    header .header_nav {
+        background: #fff;
+        -webkit-box-shadow: 0px 5px 5px -5px #5e5e5e;
+        -moz-box-shadow: 0px 5px 5px -5px #5e5e5e;
+        box-shadow: 0px 5px 5px -5px #5e5e5e
+    }
+
+        header .header_nav ul.menu a {
+            font-size: 15px;
+            height: 40px;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            padding: 10px 30px;
+            color: #1a1a1a;
+            -moz-transition: all 0.1s 0.02s ease;
+            -o-transition: all 0.1s 0.02s ease;
+            -webkit-transition: all 0.1s 0.02s ease
+        }
+
+            header .header_nav ul.menu a:hover {
+                text-decoration: none;
+                background-color: #1a1a1a;
+                color: #fff
+            }
+
+        header .header_nav ul.menu {
+            display: block;
+            margin: 0;
+            padding: 0;
+            list-style: none
+        }
+
+        header .header_nav ul:after {
+            display: block;
+            content: ' ';
+            clear: both;
+            float: none
+        }
+
+        header .header_nav ul.menu li {
+            float: left;
+            position: relative
+        }
+
+        header .header_nav ul.submenu {
+            padding-top: 10px;
+            padding-left: 0;
+            display: none;
+            position: absolute;
+            width: 250px;
+            left: 0
+        }
+
+            header .header_nav ul.submenu li {
+                margin-right: 5px;
+                display: block
+            }
+
+            header .header_nav ul.submenu a {
+                font-size: 10px;
+                background-color: #fff
+            }
+
+        header .header_nav ul.menu > li:hover > ul.submenu {
+            display: block
+        }
+
+section#main {
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    margin-top: 110px;
+    padding: 40px 0px;
+    background-color: #e0e0e0
 }
 
-.validation-summary-valid {
-    display: none;
+    section#main .main_content {
+        width: 100%;
+        -webkit-box-shadow: 0px 0px 5px 0px #5e5e5e;
+        -moz-box-shadow: 0px 0px 5px 0px #5e5e5e;
+        box-shadow: 0px 0px 5px 0px #5e5e5e;
+        color: #1a1a1a;
+        padding: 50px;
+        min-height: 1080px;
+        background-color: #fff
+    }
+
+        section#main .main_content h1, section#main .main_content h2, section#main .main_content h3, section#main .main_content h4, section#main .main_content p {
+            margin: 0px
+        }
+
+        section#main .main_content .main_title2 {
+            min-height: 310px
+        }
+
+            section#main .main_content .main_title2 h1 {
+                padding-bottom: 10px
+            }
+
+            section#main .main_content .main_title2 h2 {
+                padding-bottom: 25px;
+                font-size: 30px
+            }
+
+            section#main .main_content .main_title2 p {
+                font-size: 20px;
+                padding-bottom: 70px
+            }
+
+        section#main .main_content .articles_last .title_articles {
+            min-height: 70px;
+            padding-bottom: 30px
+        }
+
+        section#main .main_content .articles_last .article_preview {
+            height: 140px;
+            background-color: #fff;
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            border: 1px solid #e0e0e0
+        }
+
+            section#main .main_content .articles_last .article_preview:hover {
+                -webkit-box-shadow: 2px 2px 5px 0px #e0e0e0;
+                -moz-box-shadow: 2px 2px 5px 0px #e0e0e0;
+                box-shadow: 2px 2px 5px 0px #e0e0e0
+            }
+
+            section#main .main_content .articles_last .article_preview a:active, section#main .main_content .articles_last .article_preview a:focus, section#main .main_content .articles_last .article_preview a:hover, section#main .main_content .articles_last .article_preview a:visited {
+                text-decoration: none
+            }
+
+            section#main .main_content .articles_last .article_preview .excerpt {
+                font-size: 20px;
+                padding: 10px 0px
+            }
+
+            section#main .main_content .articles_last .article_preview .autor {
+                font-size: 20px
+            }
+
+            section#main .main_content .articles_last .article_preview .date {
+                padding-left: 10px
+            }
+
+        section#main .main_content .main_title {
+            min-height: 50px;
+            margin-bottom: 40px
+        }
+
+            section#main .main_content .main_title h3 {
+                margin: 0px
+            }
+
+        section#main .main_content .article_editor form {
+            height: 635px
+        }
+
+        section#main .main_content .article_editor .input {
+            padding-bottom: 20px;
+            height: 70px
+        }
+
+            section#main .main_content .article_editor .input input {
+                padding: 10px;
+                width: 100%;
+                border: 1px solid #1a1a1a
+            }
+
+        section#main .main_content .article_editor .textarea {
+            padding-bottom: 20px
+        }
+
+            section#main .main_content .article_editor .textarea textarea {
+                padding: 10px;
+                width: 100%;
+                resize: none;
+                height: 500px;
+                border: 1px solid #1a1a1a
+            }
+
+        section#main .main_content .article_editor .button {
+            height: 50px
+        }
+
+            section#main .main_content .article_editor .button button {
+                padding: 10px 20px;
+                background-color: #1a1a1a;
+                color: #fff;
+                border: 1px solid #1a1a1a
+            }
+
+                section#main .main_content .article_editor .button button:hover {
+                    background-color: #fff;
+                    color: #1a1a1a;
+                    cursor: pointer
+                }
+
+footer {
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    background-color: #1a1a1a;
+    color: #1a1a1a
 }
 
+    footer .footer_header {
+        -webkit-box-shadow: 0px -5px 5px -5px #5e5e5e;
+        -moz-box-shadow: 0px -5px 5px -5px #5e5e5e;
+        box-shadow: 0px -5px 5px -5px #5e5e5e;
+        height: 40px;
+        background-color: #fff
+    }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
+        footer .footer_header span {
+            font-size: 25px;
+            text-transform: uppercase
+        }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
+    footer .footer_content {
+        padding: 40px;
+        color: #fff
+    }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
+        footer .footer_content .footer_items .footer_border {
+            min-height: 150px;
+            width: auto;
+            background-color: #333;
+            padding: 20px;
+            border: 1px solid #fff
+        }
+
+            footer .footer_content .footer_items .footer_border a {
+                text-align: left;
+                color: #fff;
+                text-decoration: none;
+                display: block;
+                font-size: 13px;
+                padding: 5px
+            }
+
+                footer .footer_content .footer_items .footer_border a:hover {
+                    background-color: #1a1a1a
+                }
+
+        footer .footer_content .footer_items .footer_titles {
+            height: 40px;
+            text-align: center;
+            padding-bottom: 15px
+        }
+
+            footer .footer_content .footer_items .footer_titles span {
+                text-align: center;
+                text-transform: uppercase
+            }

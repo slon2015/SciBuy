@@ -10,43 +10,21 @@ using Microsoft.AspNet.Identity;
 using System.Reflection;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
+using SciBuy.Infrastructure.Abstract;
 
 namespace SciBuy.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
+        IRepository repository;
+        public HomeController(IRepository repos)
+        {
+            repository = repos;
+        }
         public ActionResult Index()
         {
-            return View(GetData("Index"));
+            return View(repository.Articles.OrderByDescending(x => x.CreatingDate).Take(5));
         }
-
-        [Authorize(Roles = "Users")]
-        public ActionResult OtherAction()
-        {
-            return View("Index", GetData("OtherAction"));
-        }
-
-        private Dictionary<string, object> GetData(string actionName)
-        {
-            Dictionary<string, object> dict = new Dictionary<string, object>();
-
-            dict.Add("Action", actionName);
-            dict.Add("Пользователь", HttpContext.User.Identity.Name);
-            dict.Add("Аутентифицирован?", HttpContext.User.Identity.IsAuthenticated);
-            dict.Add("Тип аутентификации", HttpContext.User.Identity.AuthenticationType);
-            dict.Add("В роли Users?", HttpContext.User.IsInRole("Users"));
-
-            return dict;
-        }
-        [Authorize]
-        public ActionResult UserProps()
-        {
-            return View(CurrentUser);
-        }
-
-        
-
         private AppUser CurrentUser
         {
             get
