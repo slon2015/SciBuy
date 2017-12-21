@@ -17,7 +17,7 @@ namespace SciBuy.Helpers
         }
         public static string CleanHtmlTags(string content)
         {
-            return Regex.Replace(content, "<.*?>", string.Empty);
+            return Regex.Replace(content, "<.*?>", string.Empty).Replace("&nbsp;", string.Empty);
         }
     }
 }

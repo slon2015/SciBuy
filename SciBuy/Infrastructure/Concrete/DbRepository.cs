@@ -50,9 +50,18 @@ namespace SciBuy.Infrastructure.Concrete
             context.Terms.Add(term);
             context.SaveChanges();
         }
-        public void Save(Article art)
+        public void Add(Article art)
         {
             context.Pages.Add(art);
+            context.SaveChanges();
+        }
+        public void Save(Article art)
+        {
+            
+        }
+        public void Delete(Article art)
+        {
+            context.Pages.Remove(art);
             context.SaveChanges();
         }
     }

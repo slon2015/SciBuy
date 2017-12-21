@@ -14,14 +14,16 @@
         <div class="container">
             <div class="row">
                 <div class="header_top col-md-12 d-flex justify-content-center align-items-center p-0">
-                    <div class="logo col-md-6 d-flex align-items-center pl-0">
+                    <div class="logo col-md-2 d-flex align-items-center pl-0">
                         @Html.ActionLink("SciBuy", "Index", "Home")
+                    </div>
+                    <div class="search col-md-6 d-flex justify-content-start align-items-center">
                         @using (Html.BeginForm("Index", "Search", FormMethod.Get))
                         {
-                            @Html.TextBox("title", "", new { @class = "form-control",@placeholder ="Поиск" })
+                            @Html.TextBox("title", "", new { @class = "form-control", @placeholder = "Поиск" })
                         }
                     </div>
-                    <div class="user col-md-6 d-flex justify-content-end align-items-center pr-0">
+                    <div class="user col-md-4 d-flex justify-content-end align-items-center pr-0">
                         @if (!User.Identity.IsAuthenticated)
                         {
                             @Html.ActionLink("Регистрация", "Registration", "Account")
@@ -29,7 +31,8 @@
                         }
                         else
                         {
-                            @Html.ActionLink("Мой аккаунт", "Index", "Account")
+                            @Html.ActionLink("Добавить статью", "ManageArticles", "Account")
+                            @Html.ActionLink("Профиль", "Index", "Account")
                         }
                     </div>
                 </div>

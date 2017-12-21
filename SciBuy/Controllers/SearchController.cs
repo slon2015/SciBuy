@@ -18,9 +18,14 @@ namespace SciBuy.Controllers
         // GET: Search
         public ActionResult Index(string title)
         {
-            IEnumerable<Article> result =  repository.Articles.Where(x => x.Title.Contains(title));
-            if (result.Count()==0)
-                result = repository.Articles.Where(x => x.Content.Contains(title));
+            IEnumerable<Article> result = new List<Article>();
+            if (title != "" && title != null)
+            {
+                title = title.ToLower();
+                result = repository.Articles.Where(x => x.Title.ToLower().Contains(title));
+                if (result.Count() == 0)
+                    result = repository.Articles.Where(x => x.Content.ToLower().Contains(title));
+            }
             return View(result);
         }
     }

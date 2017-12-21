@@ -1,9 +1,14 @@
 ﻿@model SciBuy.Models.Article
-
-<div class="article preview">
+@{
+    string usern = Model.Author.UserName;
+}
+<div class="article_preview">
     <h2>@Html.ActionLink(@Model.Title, "Index", "Article", new { id = Model.PageId }, null)</h2>
-    <span class="date">@Model.CreatingDate</span>
     <p class="excerpt">@SciBuy.Helpers.PageHelper.GetExcerpt(Model.Content, 50)</p>
+    <span class="author">@Html.ActionLink(usern, "Index", "Account", new { username = usern },null) </span>
+    <span class="date">@Model.CreatingDate</span>
+
+
     @if (Convert.ToBoolean(ViewData["Edit"]))
     {
         <div class="edit">

@@ -66,6 +66,20 @@ namespace SciBuy.Controllers
             ///////////////////////////////////////////
             return RedirectToAction("Complete");
         }
+        [Authorize]
+        public ActionResult Delete(int ArtId)
+        {
+            Article article = repos.Articles.FirstOrDefault(x => x.PageId == ArtId);
+            ///////////////////////////////////////////
+
+
+            //Сохраняем созданную/измененную статью здесь.
+
+            repos.Save(article);
+
+            ///////////////////////////////////////////
+            return RedirectToAction("Complete");
+        }
         private AppUserManager UserManager
         {
             get
