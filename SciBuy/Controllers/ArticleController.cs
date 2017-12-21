@@ -50,9 +50,12 @@ namespace SciBuy.Controllers
         [Authorize]
         public ViewResult CreateArticle(int ArtId = 0)
         {
+
+            
             CreateArticleViewModel model = new CreateArticleViewModel();
             if (ArtId != 0)
             {
+                
                 Article article = repos.Articles.FirstOrDefault(a => a.PageId == ArtId);
                 if (article != null)
                 {
@@ -62,29 +65,35 @@ namespace SciBuy.Controllers
                     model.Author = article.Author;
                 }
             }
+
+            if (model.ArticleID != 0 && model.Author != CurrentUser)
+            {
+                return View("Error", new List<string>() { "Вы не обладаете правами на редактирование данной статьи." });
+            }
             return View(model);
         }
         [HttpPost]
         [Authorize]
         public ActionResult CreateArticle(CreateArticleViewModel model)
         {
-            Article current = new Article()
-            {
-                Title = model.Name,
-                Content = model.Content,
-                PageId = model.ArticleID,
-                Author = UserManager.FindByName(HttpContext.User.Identity.Name),
-                CreatingDate = DateTime.Now
-            };
-            ///////////////////////////////////////////
+            
+                Article current = new Article()
+                {
+                    Title = model.Name,
+                    Content = model.Content,
+                    PageId = model.ArticleID,
+                    Author = UserManager.FindByName(HttpContext.User.Identity.Name),
+                    CreatingDate = DateTime.Now
+                };
+                ///////////////////////////////////////////
 
 
-            //Сохраняем созданную/измененную статью здесь.
+                //Сохраняем созданную/измененную статью здесь.
 
-            repos.Save(current);
+                repos.Save(current);
 
-            ///////////////////////////////////////////
-            return RedirectToAction("Complete");
+                ///////////////////////////////////////////
+            return RedirectToAction("ManageArticles", "Account");
         }
         private AppUserManager UserManager
         {
