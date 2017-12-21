@@ -19,6 +19,11 @@ namespace SciBuy.Infrastructure.Concrete
 
         public IEnumerable<Category> Categories => throw new NotImplementedException();
 
+        public void Delete(Article art)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Save(Article art)
         {
             if (art.PageId == 0)
