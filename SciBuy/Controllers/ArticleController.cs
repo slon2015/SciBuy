@@ -27,6 +27,25 @@ namespace SciBuy.Controllers
                 return View(article);
             return View("Error", new string[] { "Статья" });
         }
+
+        [HttpPost]
+        [Authorize]
+        public void Delete(int ArtId)
+        {
+            Article article = repos.Articles.First(a => a.PageId == ArtId);
+            if (article != null && article.Author == CurrentUser)
+            {
+                repos.Delete(article);
+            }
+        }
+        private AppUser CurrentUser
+        {
+            get
+            {
+                return UserManager.FindByName(HttpContext.User.Identity.Name);
+            }
+        }
+
         [HttpGet]
         [Authorize]
         public ViewResult CreateArticle(int ArtId = 0)

@@ -55,5 +55,16 @@ namespace SciBuy.Infrastructure.Concrete
             context.Pages.Add(art);
             context.SaveChanges();
         }
+
+        public void Delete(Article art)
+        {
+            if (art != null && Articles.Contains(art))
+            {
+                context.Pages.Remove(art);
+                context.SaveChanges();
+            }
+
+        }
+
     }
 }
