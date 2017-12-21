@@ -17,5 +17,6 @@ namespace SciBuy.Infrastructure.Abstract
 
 
         void Save(Article art);
+        void Delete(Article art);
     }
 }

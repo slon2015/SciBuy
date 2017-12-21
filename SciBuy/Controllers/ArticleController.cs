@@ -9,6 +9,7 @@ using Microsoft.Owin.Security;
 using SciBuy.Models;
 using SciBuy.Infrastructure;
 using SciBuy.Infrastructure.Abstract;
+using System.IO;
 
 namespace SciBuy.Controllers
 {
@@ -26,6 +27,25 @@ namespace SciBuy.Controllers
                 return View(article);
             return View("Error", new string[] { "Статья" });
         }
+
+        [HttpPost]
+        [Authorize]
+        public void Delete(int ArtId)
+        {
+            Article article = repos.Articles.First(a => a.PageId == ArtId);
+            if (article != null && article.Author == CurrentUser)
+            {
+                repos.Delete(article);
+            }
+        }
+        private AppUser CurrentUser
+        {
+            get
+            {
+                return UserManager.FindByName(HttpContext.User.Identity.Name);
+            }
+        }
+
         [HttpGet]
         [Authorize]
         public ViewResult CreateArticle(int ArtId = 0)
@@ -93,5 +113,56 @@ namespace SciBuy.Controllers
         {
             return View(repos.Articles);
         }
+
+        public ActionResult SaveUploadedFile()
+        {
+            bool isSavedSuccessfully = true;
+            string fName = "";
+            try
+            {
+                foreach (string fileName in Request.Files)
+                {
+                    HttpPostedFileBase file = Request.Files[fileName];
+                    //Save file content goes here
+                    fName = file.FileName;
+                    if (file != null && file.ContentLength > 0)
+                    {
+
+                        var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\WallImages", Server.MapPath(@"\")));
+
+                        string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "imagepath");
+
+                        var fileName1 = Path.GetFileName(file.FileName);
+
+                        bool isExists = System.IO.Directory.Exists(pathString);
+
+                        if (!isExists)
+                            System.IO.Directory.CreateDirectory(pathString);
+
+                        var path = string.Format("{0}\\{1}", pathString, file.FileName);
+                        file.SaveAs(path);
+
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                isSavedSuccessfully = false;
+            }
+
+
+            if (isSavedSuccessfully)
+            {
+                return Json(new { Message = fName });
+            }
+            else
+            {
+                return Json(new { Message = "Error in saving file" });
+            }
+        }
+
+
     }
 }

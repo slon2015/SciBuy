@@ -16,6 +16,21 @@
     });
 </script>
 
+@Styles.Render("~/Content/dropzonescss")
+@Scripts.Render("~/bundles/dropzonescripts")
+
+<script type="text/javascript">
+    //File Upload response from the server
+    Dropzone.options.dropzoneForm = {
+        init: function () {
+            this.on("complete", function (data) {
+                //var res = eval('(' + data.xhr.responseText + ')');
+                var res = JSON.parse(data.xhr.responseText);
+            });
+        }
+    };
+</script>
+
 @using (Html.BeginForm("CreateArticle"))
 {
     @Html.ValidationSummary()
@@ -27,9 +42,33 @@
     @Html.HiddenFor(M => M.Author.Id)//Позже сделаю через httpcontext и выпилю это поле
 
     @Html.HiddenFor(M => M.ArticleID)
+
     
+
     <input type="submit" value="Создать" />
-}    
+}  
+@*<style>
+    #dropZone {
+        background: gray;
+        border: black dashed 3px;
+        width: 200px;
+        padding: 50px;
+        text-align: center;
+        color: white;
+    }
+</style>*@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="jumbotron">
+            <form action="~/Article/SaveUploadedFile" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
+                <div class="fallback">
+                    <input name="file" type="file" multiple />
+                    <input type="submit" value="Upload" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 
